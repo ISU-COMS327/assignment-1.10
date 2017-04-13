@@ -1,0 +1,119 @@
+commit e3a0b75
+Author:     Joseph McGovern <joseph.mcgovern@webfilings.com>
+AuthorDate: Thu Apr 6 08:52:07 2017 -0500
+Commit:     Joseph McGovern <joseph.mcgovern@webfilings.com>
+CommitDate: Thu Apr 6 08:52:07 2017 -0500
+
+    Initialize Repository
+
+commit e8cd139
+Author:     Joseph McGovern <joseph.mcgovern@webfilings.com>
+AuthorDate: Thu Apr 6 09:02:26 2017 -0500
+Commit:     Joseph McGovern <joseph.mcgovern@webfilings.com>
+CommitDate: Thu Apr 6 09:02:26 2017 -0500
+
+    Create Character class and stop freeing non-pointer array
+
+commit d2da8b4
+Author:     Joseph McGovern <joseph.mcgovern@webfilings.com>
+AuthorDate: Thu Apr 6 09:20:02 2017 -0500
+Commit:     Joseph McGovern <joseph.mcgovern@webfilings.com>
+CommitDate: Thu Apr 6 09:20:02 2017 -0500
+
+    Created player object, need to implement
+
+commit 15e47ce
+Author:     Joseph McGovern <joseph.mcgovern@webfilings.com>
+AuthorDate: Thu Apr 6 09:31:16 2017 -0500
+Commit:     Joseph McGovern <joseph.mcgovern@webfilings.com>
+CommitDate: Thu Apr 6 09:31:16 2017 -0500
+
+    Converted player to player object in game
+
+commit 73af2bc
+Author:     Joseph McGovern <joseph.mcgovern@webfilings.com>
+AuthorDate: Thu Apr 6 10:15:03 2017 -0500
+Commit:     Joseph McGovern <joseph.mcgovern@webfilings.com>
+CommitDate: Thu Apr 6 10:15:03 2017 -0500
+
+    Change equipment to be a vector. Computed damage and speed
+
+commit 07911ad
+Author:     Joseph McGovern <joseph.mcgovern@webfilings.com>
+AuthorDate: Thu Apr 6 10:15:20 2017 -0500
+Commit:     Joseph McGovern <joseph.mcgovern@webfilings.com>
+CommitDate: Thu Apr 6 10:15:20 2017 -0500
+
+    Forgot to make clean
+
+commit 762bb00
+Author:     Joseph McGovern <joseph.mcgovern@webfilings.com>
+AuthorDate: Thu Apr 6 10:25:04 2017 -0500
+Commit:     Joseph McGovern <joseph.mcgovern@webfilings.com>
+CommitDate: Thu Apr 6 10:25:04 2017 -0500
+
+    Get valid project description pdf
+
+commit 2de2c97
+Author:     Joseph McGovern <joseph.mcgovern@webfilings.com>
+AuthorDate: Thu Apr 6 11:49:37 2017 -0500
+Commit:     Joseph McGovern <joseph.mcgovern@webfilings.com>
+CommitDate: Thu Apr 6 11:49:37 2017 -0500
+
+    View item in inventory
+
+commit 2681cec
+Author:     Joseph McGovern <joseph.mcgovern@webfilings.com>
+AuthorDate: Tue Apr 11 10:36:24 2017 -0500
+Commit:     Joseph McGovern <joseph.mcgovern@webfilings.com>
+CommitDate: Tue Apr 11 10:36:24 2017 -0500
+
+    List pc inventory and equipment now supported
+
+commit 26b5b46
+Author:     Joseph McGovern <joseph.mcgovern@webfilings.com>
+AuthorDate: Tue Apr 11 11:07:58 2017 -0500
+Commit:     Joseph McGovern <joseph.mcgovern@webfilings.com>
+CommitDate: Tue Apr 11 11:07:58 2017 -0500
+
+    Added function to more easily print messages on new screen
+
+commit 3c12e19
+Author:     Joseph McGovern <joseph.mcgovern@webfilings.com>
+AuthorDate: Tue Apr 11 14:16:20 2017 -0500
+Commit:     Joseph McGovern <joseph.mcgovern@webfilings.com>
+CommitDate: Tue Apr 11 14:16:20 2017 -0500
+
+    Implemented all new commands
+
+commit fea0749
+Author:     Joseph McGovern <joseph.mcgovern@webfilings.com>
+AuthorDate: Tue Apr 11 14:24:40 2017 -0500
+Commit:     Joseph McGovern <joseph.mcgovern@webfilings.com>
+CommitDate: Tue Apr 11 14:24:40 2017 -0500
+
+    NPCs dont kill each other
+
+commit 8f1a401
+Author:     Joseph McGovern <joseph.mcgovern@webfilings.com>
+AuthorDate: Tue Apr 11 15:02:02 2017 -0500
+Commit:     Joseph McGovern <joseph.mcgovern@webfilings.com>
+CommitDate: Tue Apr 11 15:02:02 2017 -0500
+
+    Upgraded combat
+
+commit 9ec773b (origin/master)
+Author:     Joseph McGovern <joseph.mcgovern@webfilings.com>
+AuthorDate: Tue Apr 11 15:42:30 2017 -0500
+Commit:     Joseph McGovern <joseph.mcgovern@webfilings.com>
+CommitDate: Tue Apr 11 15:42:30 2017 -0500
+
+    Updated priority queue and assigned ids to monsters and player
+
+commit 21ba0d1 (HEAD -> master)
+Author:     Joseph McGovern <joseph.mcgovern@webfilings.com>
+AuthorDate: Tue Apr 11 16:16:07 2017 -0500
+Commit:     Joseph McGovern <joseph.mcgovern@webfilings.com>
+CommitDate: Tue Apr 11 16:16:07 2017 -0500
+
+    Fixed a couple of issues
