@@ -19,6 +19,7 @@ class Player : public Character {
     public:
         int getSpeed();
         int getAttackDamage();
+        int getRangedAttackDamage();
         bool canPickUpObject();
         void addObjectToInventory(Object *);
         string viewInventoryObjectAt(int index);

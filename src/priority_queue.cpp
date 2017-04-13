@@ -4,6 +4,20 @@ int PriorityQueue :: size() {
     return nodes.size();
 }
 
+void PriorityQueue :: removeFromQueue(Character * character) {
+    int index = -1;
+    for (size_t i = 0; i < nodes.size(); i++) {
+        Node existing_node = nodes[i];
+        if (!existing_node.character->id.compare(character->id)) {
+            index = i;
+            break;
+        }
+    }
+    if (index >= 0) {
+        nodes.erase(nodes.begin() + index);
+    }
+}
+
 void PriorityQueue :: insertWithPriority(Character * character, int priority) {
     Node node;
     node.character = character;

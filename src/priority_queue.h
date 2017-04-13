@@ -22,6 +22,7 @@ class PriorityQueue {
     public:
         int size();
         void clear();
+        void removeFromQueue(Character * character);
         void insertWithPriority(Character * character, int);
         void insertCoordWithPriority(struct Coordinate coord, int);
         void decreaseCoordPriority(struct Coordinate coord, int);

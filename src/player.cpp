@@ -1,4 +1,5 @@
 #include "player.h"
+#include <iostream>
 
 int Player :: getSpeed() {
     int my_speed = speed;
@@ -15,10 +16,20 @@ int Player :: getAttackDamage() {
     int damage = attack_damage->roll();
     for (size_t i = 0; i < equipment.size(); i++) {
         Object * object = equipment[i];
-        if (object) {
+        if (object && i != 2) { // ignore ranged
             damage += object->damage_bonus->roll();
         }
     }
+    return damage;
+}
+
+int Player :: getRangedAttackDamage() {
+    if (!equipment[2]) {
+        return 0;
+    }
+    int damage = attack_damage->roll();
+    Object * range = equipment[2];
+    damage += range->damage_bonus->roll();
     return damage;
 }
 
@@ -190,17 +201,42 @@ void Player :: removeInventoryItemAt(int index) {
     inventory.erase(inventory.begin() + index);
 }
 
-void Player :: hasRangedWeapon() {
+bool Player :: hasRangedWeapon() {
     return equipment[2] != NULL;
 }
 
 Player :: Player() : Character() {
+    cout << "NEW PLAYER" << endl << flush;
     attack_damage = new Numeric("0+1d4");
     speed = 10;
     hitpoints = 500;
+    x = 0;
+    y = 0;
     for (int i = 0; i < 12; i++) {
-        equipment.push_back(NULL);
+        if (i == 2) {
+            Object * obj = new Object();
+            obj->type = "RANGED";
+            obj->description = "Desc";
+            obj->name = "name";
+            obj->color = "RED";
+            obj->x = 0;
+            obj->y = 0;
+            obj->hit_bonus = 50;
+            obj->damage_bonus = new Numeric("50+5d8");
+            obj->dodge_bonus = 50;
+            obj->defense_bonus = 50;
+            obj->weight = 50;
+            obj->speed_bonus = 50;
+            obj->special_attribute = 50;
+            obj->value = 50;
+
+            equipment.push_back(obj);
+        }
+        else {
+            equipment.push_back(NULL);
+        }
     }
+    cout << "PLAYER MADE" << endl << flush;
 }
 
 Player :: ~Player() {

@@ -115,7 +115,6 @@ void ObjectDescriptionParser::parseFile() {
     }
     object_templates = new_objects;
     file.close();
-
 }
 
 void ObjectDescriptionParser::printObjects() {
