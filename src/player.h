@@ -32,6 +32,7 @@ class Player : public Character {
         Object * getEquipmentAt(int index);
         void takeOffEquipment(int index);
         void removeInventoryItemAt(int index);
+        bool hasRangedWeapon();
         Player();
         ~Player();
 };

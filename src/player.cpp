@@ -190,6 +190,10 @@ void Player :: removeInventoryItemAt(int index) {
     inventory.erase(inventory.begin() + index);
 }
 
+void Player :: hasRangedWeapon() {
+    return equipment[2] != NULL;
+}
+
 Player :: Player() : Character() {
     attack_damage = new Numeric("0+1d4");
     speed = 10;

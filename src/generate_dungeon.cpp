@@ -1105,6 +1105,68 @@ void handle_killed_monster(Monster * monster) {
 
 }
 
+int handle_ranged_mode_input() {
+    struct Coordinate coord = ncurses_player_coord;
+    int local_x = player->x;
+    int local_y = player->y;
+    while(true) {
+        int key = getch();
+        if (key == 107) { // k - one cell up
+            if (board[player->y - 1][player->x].hardness > 0) {
+               return 0;
+            }
+            new_coord.y = player->y - 1;
+        }
+        else if (key == 106) { // j - one cell down
+            if (board[player->y + 1][player->x].hardness > 0) {
+                return 0;
+            }
+            new_coord.y = player->y + 1;
+        }
+        else if (key == 104) { // h - one cell left
+            if (board[player->y][player->x - 1].hardness > 0) {
+                return 0;
+            }
+            new_coord.x = player->x - 1;
+        }
+        else if(key == 108) { // l - one cell right
+            if (board[player->y][player->x + 1].hardness > 0) {
+                return 0;
+            }
+            new_coord.x = player->x + 1;
+        }
+        else if (key == 121) { // y - one cell up-left
+            if (board[player->y - 1][player->x - 1].hardness > 0) {
+                return 0;
+            }
+            new_coord.x = player->x - 1;
+            new_coord.y = player->y - 1;
+        }
+        else if (key == 117) { // u - one cell up-right
+            if (board[player->y - 1][player->x + 1].hardness > 0) {
+                return 0;
+            }
+            new_coord.x = player->x + 1;
+            new_coord.y = player->y - 1;
+        }
+        else if (key == 110) { // n - one cell low-right
+            if (board[player->y + 1][player->x + 1].hardness > 0) {
+                return 0;
+            }
+            new_coord.x = player->x + 1;
+            new_coord.y = player->y + 1;
+        }
+        else if (key == 98) { // b - one cell low-left
+            if (board[player->y + 1][player->x - 1].hardness > 0) {
+                return 0;
+            }
+            new_coord.x = player->x - 1;
+            new_coord.y = player->y + 1;
+        }
+    }
+    return 0;
+}
+
 int handle_user_input(int key) {
     struct Coordinate new_coord;
     new_coord.x = player->x;
@@ -1275,6 +1337,14 @@ int handle_user_input(int key) {
         print_on_clear_screen(message);
         return 0;
 
+    }
+    else if (key == 114) { // r - ranged combat
+        if (!player.hasRangedWeapon()) {
+            add_message("You have no ranged weapon. It's still your turn");
+            return 0;
+        }
+        add_message("Entered ranged mode");
+        return handle_ranged_mode_input();
     }
     else if (key == 107 || key == 8) { // k - one cell up
         if (board[player->y - 1][player->x].hardness > 0) {
