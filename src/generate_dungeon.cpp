@@ -50,11 +50,6 @@ static string TYPE_ROCK = "rock";
 static string TYPE_UPSTAIR = "upstair";
 static string TYPE_DOWNSTAIR = "downstair";
 
-struct Available_Coords {
-    struct Coordinate * coords;
-    int length;
-};
-
 typedef struct {
     int tunneling_distance;
     int non_tunneling_distance;
@@ -80,7 +75,7 @@ struct Room {
 
 static Board_Cell board[HEIGHT][WIDTH];
 static Board_Cell player_board[HEIGHT][WIDTH];
-static struct Coordinate placeable_areas[HEIGHT * WIDTH];
+static vector<struct Coordinate> placeable_areas;
 static struct Coordinate ncurses_player_coord;
 static struct Coordinate ncurses_start_coord;
 static vector<struct Room> rooms;
@@ -403,7 +398,7 @@ void update_number_of_rooms() {
 
 void generate_new_board() {
     initialize_board();
-    rooms.empty();
+    rooms.clear();
     if (DO_LOAD) {
         load_board();
         DO_LOAD = 0;
@@ -627,16 +622,15 @@ void place_player() {
 }
 
 void set_placeable_areas() {
-    NUMBER_OF_PLACEABLE_AREAS = 0;
+    placeable_areas.clear();
     for (int y = 0; y < HEIGHT; y++) {
         for (int x = 0; x < WIDTH; x++) {
             Board_Cell cell = board[y][x];
-            if (cell.hardness == 0 && cell.x != player->x && cell.y != player->y) {
+            if (cell.hardness == 0 && (cell.x != player->x || cell.y != player->y)) {
                 struct Coordinate coord;
                 coord.x = cell.x;
                 coord.y = cell.y;
-                placeable_areas[NUMBER_OF_PLACEABLE_AREAS] = coord;
-                NUMBER_OF_PLACEABLE_AREAS++;
+                placeable_areas.push_back(coord);
             }
         }
     }
@@ -768,7 +762,7 @@ void set_tunneling_distance_to_player() {
             }
         }
         count ++;
-        neighbors.empty();
+        neighbors.clear();
     }
     delete tunneling_queue;
 };
@@ -866,13 +860,13 @@ void set_non_tunneling_distance_to_player() {
                 non_tunneling_queue->decreaseCoordPriority(coord, min_dist);
             }
         }
-        neighbors.empty();
+        neighbors.clear();
     }
     delete non_tunneling_queue;
 }
 
 struct Coordinate get_random_board_location() {
-    int index = random_int(0, NUMBER_OF_PLACEABLE_AREAS);
+    int index = random_int(0, placeable_areas.size() - 1);
     return placeable_areas[index];
 }
 
