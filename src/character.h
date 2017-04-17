@@ -5,7 +5,9 @@
 class Character {
     public:
         string id;
+        int turn_health_regenerated;
         int speed;
+        int max_hitpoints;
         int hitpoints;
         Numeric * attack_damage;
         int x;
@@ -13,6 +15,7 @@ class Character {
         void damage(int amount);
         bool isAlive();
         bool is(Character * other);
+        void regenerateHealth(int turn);
         Character();
 };
 #endif

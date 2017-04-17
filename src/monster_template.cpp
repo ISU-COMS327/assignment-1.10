@@ -92,6 +92,7 @@ Monster * MonsterTemplate::makeMonster() {
     m->speed = speed->roll();
     m->abilities = abilities;
     m->hitpoints = hitpoints->roll();
+    m->max_hitpoints = m->hitpoints;
     m->decimal_type = 0;
     m->attack_damage = attack_damage;
     return m;

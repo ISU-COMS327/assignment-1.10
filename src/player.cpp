@@ -34,8 +34,7 @@ int Player :: getEquipmentWeight() {
             weight += object->weight;
         }
     }
-    //return weight;
-    return 249;
+    return weight;
 }
 
 int Player :: getInventoryWeight() {
@@ -56,7 +55,7 @@ int Player :: getAttackDamage() {
     if (equipment[0]) {
         dice = equipment[0]->damage_bonus;
     }
-    int base_damage = dice->roll();
+    int damage = dice->roll();
     for (size_t i = 1; i < equipment.size(); i++) {
         Object * object = equipment[i];
         if (object && i != 2) { // ignore ranged
@@ -253,6 +252,7 @@ Player :: Player() : Character() {
     attack_damage = new Numeric("0+1d4");
     speed = 10;
     hitpoints = MAX_HITPOINTS;
+    max_hitpoints = MAX_HITPOINTS;
     x = 0;
     y = 0;
     for (int i = 0; i < 12; i++) {

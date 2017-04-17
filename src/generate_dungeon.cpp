@@ -98,20 +98,6 @@ static int MAX_ROOM_WIDTH = DEFAULT_MAX_ROOM_WIDTH;
 static int MAX_ROOM_HEIGHT = DEFAULT_MAX_ROOM_HEIGHT;
 static int NUMBER_OF_MONSTERS = 100; //DEFAULT_NUMBER_OF_MONSTERS;
 
-int max(int x, int y) {
-    if (x > y) {
-        return x;
-    }
-    return y;
-}
-int min(int x, int y) {
-    if (x < y) {
-        return x;
-    }
-    return y;
-}
-
-
 void handle_killed_monster(Monster * monster);
 bool damage_monster(Monster * monster, int damage);
 void init_color_pairs();
@@ -196,7 +182,7 @@ int main(int argc, char *args[]) {
     center_board_on_player();
     move(ncurses_player_coord.y, ncurses_player_coord.x);
     refresh();
-    int monster_count = 0;
+    int game_turn = 1;
     while(monsters.size() > 0 && player->isAlive() && !DO_QUIT) {
         center_board_on_player();
         refresh();
@@ -204,7 +190,6 @@ int main(int argc, char *args[]) {
         Character * character = min.character;
         int speed;
         if (character->is(player)) {
-            monster_count = 0;
             string message = "It's your turn.";
             if (player->isOverEncumbered()) {
                 message += " You are overencumbered and move very slowly!";
@@ -240,7 +225,6 @@ int main(int argc, char *args[]) {
             if (monster == NULL) {
                 continue;
             }
-            monster_count ++;
             add_message("The monsters are moving towards you...");
             move_monster(monster);
             speed = monster->speed;
@@ -251,6 +235,8 @@ int main(int argc, char *args[]) {
         else {
             curs_set(0);
         }
+        character->regenerateHealth(game_turn);
+        game_turn ++;
         center_board_on_player();
         refresh();
         game_queue->insertWithPriority(character, (1000/speed) + min.priority);
