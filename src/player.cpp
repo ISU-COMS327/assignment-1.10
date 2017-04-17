@@ -52,8 +52,12 @@ int Player :: getWeight() {
 }
 
 int Player :: getAttackDamage() {
-    int damage = attack_damage->roll();
-    for (size_t i = 0; i < equipment.size(); i++) {
+    Numeric * dice = attack_damage;
+    if (equipment[0]) {
+        dice = equipment[0]->damage_bonus;
+    }
+    int base_damage = dice->roll();
+    for (size_t i = 1; i < equipment.size(); i++) {
         Object * object = equipment[i];
         if (object && i != 2) { // ignore ranged
             damage += object->damage_bonus->roll();
