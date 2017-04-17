@@ -10,13 +10,20 @@ using namespace std;
 class Player : public Character {
     private:
         static const int MAX_INVENTORY_SIZE = 10;
+        static const int DEFAULT_MAX_CARRYING_WEIGHT = 250;
+        static const int MAX_HITPOINTS = 500;
         vector<Object *> inventory;
         vector<Object *> equipment;
         int getIndexToSwapEquipmentWith(string type);
         vector<int> getIndexOfEquipmentType(string type);
         string getEquipmentTypeFromIndex(int index);
+        int getEquipmentWeight();
+        int getInventoryWeight();
 
     public:
+        string getHudInfo();
+        bool isOverEncumbered();
+        int getWeight();
         int getSpeed();
         int getAttackDamage();
         int getRangedAttackDamage();

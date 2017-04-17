@@ -187,11 +187,7 @@ int main(int argc, char *args[]) {
     make_rlg_directory();
     make_monster_templates();
     make_object_templates();
-    //cout << "SET P COORD" << endl << flush;
-    //player->x = 0;
-    //player->y = 0;
-    //cout << "UPDATE NUM ROOM" << endl << flush;
-    //update_number_of_rooms();
+    update_number_of_rooms();
     generate_new_board();
     initscr();
     noecho();
@@ -209,8 +205,11 @@ int main(int argc, char *args[]) {
         int speed;
         if (character->is(player)) {
             monster_count = 0;
-            add_message("It's your turn");
-            speed = player->getSpeed();
+            string message = "It's your turn.";
+            if (player->isOverEncumbered()) {
+                message += " You are overencumbered and move very slowly!";
+            }
+            add_message(message);
             int success = 0;
             while (!success) {
                 int ch = getch();
@@ -234,6 +233,7 @@ int main(int argc, char *args[]) {
             }
             set_non_tunneling_distance_to_player();
             set_tunneling_distance_to_player();
+            speed = player->getSpeed();
         }
         else {
             Monster * monster = (Monster *) character;
@@ -1296,6 +1296,13 @@ int handle_user_input(int key) {
         print_on_clear_screen(message);
         return 0;
 
+    }
+    else if (key == 72) { // H - view health, etc.
+        string message = "HUD\n";
+        message += player->getHudInfo();
+        message += "\n(Pres any key to return to game view)";
+        print_on_clear_screen(message);
+        return 0;
     }
     else if (key == 114) { // r - ranged combat
         if (!player->hasRangedWeapon()) {

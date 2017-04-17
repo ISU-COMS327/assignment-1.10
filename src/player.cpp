@@ -9,7 +9,46 @@ int Player :: getSpeed() {
             my_speed += object->speed_bonus;
         }
     }
+    if (isOverEncumbered()) {
+        my_speed = my_speed / 4;
+    }
     return my_speed;
+}
+
+string Player :: getHudInfo() {
+    string info = "Health: " + to_string(hitpoints) + "/" + to_string(MAX_HITPOINTS) + "\n";
+    info += "Carry: " + to_string(getWeight()) + "/" + to_string(DEFAULT_MAX_CARRYING_WEIGHT);
+    return info;
+
+}
+
+bool Player :: isOverEncumbered() {
+   return getWeight() > DEFAULT_MAX_CARRYING_WEIGHT;
+}
+
+int Player :: getEquipmentWeight() {
+    int weight = 0;
+    for (size_t i = 0; i < equipment.size(); i++) {
+        Object * object = equipment[i];
+        if (object) {
+            weight += object->weight;
+        }
+    }
+    //return weight;
+    return 249;
+}
+
+int Player :: getInventoryWeight() {
+    int weight = 0;
+    for (size_t i = 0; i < inventory.size(); i++) {
+        Object * object = inventory[i];
+        weight += object->weight;
+    }
+    return weight;
+}
+
+int Player :: getWeight() {
+    return getEquipmentWeight() + getInventoryWeight();
 }
 
 int Player :: getAttackDamage() {
@@ -209,7 +248,7 @@ Player :: Player() : Character() {
     cout << "NEW PLAYER" << endl << flush;
     attack_damage = new Numeric("0+1d4");
     speed = 10;
-    hitpoints = 500;
+    hitpoints = MAX_HITPOINTS;
     x = 0;
     y = 0;
     for (int i = 0; i < 12; i++) {
