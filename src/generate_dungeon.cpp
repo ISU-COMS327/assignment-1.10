@@ -863,7 +863,7 @@ void print_non_tunneling_board() {
                printf("@");
            }
            else {
-               if (strcmp(cell.type.c_str(), TYPE_ROCK.c_str()) != 0) {
+               if (cell.type.compare(TYPE_ROCK) != 0) {
                    printf("%d", cell.non_tunneling_distance % 10);
                }
                else {
@@ -954,19 +954,19 @@ void update_board_view(int ncurses_start_x, int ncurses_start_y) {
             }
             else {
                 Board_Cell cell = player_board[y][x];
-                if (strcmp(cell.type.c_str(), TYPE_UPSTAIR.c_str()) == 0) {
+                if (cell.type.compare(TYPE_UPSTAIR) == 0) {
                     mvprintw(row, col, "<");
                 }
-                else if (strcmp(cell.type.c_str(), TYPE_DOWNSTAIR.c_str()) == 0) {
+                else if (cell.type.compare(TYPE_DOWNSTAIR) == 0) {
                     mvprintw(row, col, ">");
                 }
-                else if (strcmp(cell.type.c_str(), TYPE_ROCK.c_str()) == 0) {
+                else if (cell.type.compare(TYPE_ROCK) == 0) {
                     mvprintw(row, col, " ");
                 }
-                else if (strcmp(cell.type.c_str(), TYPE_ROOM.c_str()) == 0) {
+                else if (cell.type.compare(TYPE_ROOM) == 0) {
                     mvprintw(row, col, ".");
                 }
-                else if (strcmp(cell.type.c_str(), TYPE_CORRIDOR.c_str()) == 0) {
+                else if (cell.type.compare(TYPE_CORRIDOR) == 0) {
                     mvprintw(row, col, "#");
                 }
                 else {
@@ -1351,7 +1351,7 @@ int handle_user_input(int key) {
         new_coord.y = player->y + 1;
     }
     else if (key == 60 && IS_CONTROL_MODE) {  // upstairs
-        if (strcmp(board[player->y][player->x].type.c_str(), TYPE_UPSTAIR.c_str()) != 0) {
+        if (board[player->y][player->x].type.compare(TYPE_UPSTAIR) != 0) {
            return 0;
         }
         add_message("You travel upstairs");
@@ -1361,7 +1361,7 @@ int handle_user_input(int key) {
         return 2;
     }
     else if (key == 62) {  // downstairs
-        if (strcmp(board[player->y][player->x].type.c_str(), TYPE_DOWNSTAIR.c_str()) != 0) {
+        if (board[player->y][player->x].type.compare(TYPE_DOWNSTAIR) != 0) {
             return 0;
         }
         add_message("You travel downstairs");
@@ -1442,13 +1442,13 @@ void print_board() {
 }
 
 void print_cell(Board_Cell cell) {
-    if (strcmp(cell.type.c_str(), TYPE_ROCK.c_str()) == 0) {
+    if (cell.type.compare(TYPE_ROCK) == 0) {
         printf(" ");
     }
-    else if (strcmp(cell.type.c_str(), TYPE_ROOM.c_str()) == 0) {
+    else if (cell.type.compare(TYPE_ROOM) == 0) {
         printf(".");
     }
-    else if (strcmp(cell.type.c_str(), TYPE_CORRIDOR.c_str()) == 0) {
+    else if (cell.type.compare(TYPE_CORRIDOR) == 0) {
         printf("#");
     }
     else {
@@ -1576,7 +1576,7 @@ void connect_rooms_at_indexes(int index1, int index2) {
     while(1) {
         int random_num = random_int(0, RAND_MAX);
         int move_y = random_num % 2 == 0;
-        if (strcmp(board[cur_y][cur_x].type.c_str(),  TYPE_ROCK.c_str()) != 0) {
+        if (board[cur_y][cur_x].type.compare(TYPE_ROCK) != 0) {
             if (cur_y != end_y) {
                 cur_y += y_incrementer;
             }
