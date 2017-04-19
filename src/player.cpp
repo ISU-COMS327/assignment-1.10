@@ -69,10 +69,8 @@ int Player :: getRangedAttackDamage() {
     if (!equipment[2]) {
         return 0;
     }
-    int damage = attack_damage->roll();
     Object * range = equipment[2];
-    damage += range->damage_bonus->roll();
-    return damage;
+    return range->damage_bonus->roll();
 }
 
 bool Player :: canPickUpObject() {
@@ -259,8 +257,8 @@ Player :: Player() : Character() {
         if (i == 2) {
             Object * obj = new Object();
             obj->type = "RANGED";
-            obj->description = "Desc";
-            obj->name = "name";
+            obj->description = "A very deadly sniper rifle";
+            obj->name = ".50 cal";
             obj->color = "RED";
             obj->x = 0;
             obj->y = 0;
