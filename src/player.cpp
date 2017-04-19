@@ -246,7 +246,6 @@ bool Player :: hasRangedWeapon() {
 }
 
 Player :: Player() : Character() {
-    cout << "NEW PLAYER" << endl << flush;
     attack_damage = new Numeric("0+1d4");
     speed = 10;
     hitpoints = MAX_HITPOINTS;
@@ -277,7 +276,6 @@ Player :: Player() : Character() {
             equipment.push_back(NULL);
         }
     }
-    cout << "PLAYER MADE" << endl << flush;
 }
 
 Player :: ~Player() {

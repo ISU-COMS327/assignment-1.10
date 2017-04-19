@@ -1,0 +1,79 @@
+commit 6da9d76
+Author:     Joseph McGovern <joseph.mcgovern@webfilings.com>
+AuthorDate: Wed Apr 12 20:25:44 2017 -0500
+Commit:     Joseph McGovern <joseph.mcgovern@webfilings.com>
+CommitDate: Wed Apr 12 20:25:44 2017 -0500
+
+    Initialize repository
+
+commit 7a9adec
+Author:     Joseph McGovern <joseph.mcgovern@webfilings.com>
+AuthorDate: Thu Apr 13 08:45:59 2017 -0500
+Commit:     Joseph McGovern <joseph.mcgovern@webfilings.com>
+CommitDate: Thu Apr 13 08:45:59 2017 -0500
+
+    Started to implement ranged
+
+commit 7b63d95
+Author:     Joseph McGovern <joseph.mcgovern@webfilings.com>
+AuthorDate: Thu Apr 13 12:26:49 2017 -0500
+Commit:     Joseph McGovern <joseph.mcgovern@webfilings.com>
+CommitDate: Thu Apr 13 12:26:49 2017 -0500
+
+    Implemented ranged attacks and tracked down a bug
+
+commit 4d2d35a
+Author:     Joseph McGovern <joseph.mcgovern@webfilings.com>
+AuthorDate: Fri Apr 14 14:00:03 2017 -0500
+Commit:     Joseph McGovern <joseph.mcgovern@webfilings.com>
+CommitDate: Fri Apr 14 14:00:03 2017 -0500
+
+    Fixed a couple of issues causing bad alloc and seg fault
+
+commit c005a45
+Author:     Joseph McGovern <joseph.mcgovern@webfilings.com>
+AuthorDate: Fri Apr 14 14:00:33 2017 -0500
+Commit:     Joseph McGovern <joseph.mcgovern@webfilings.com>
+CommitDate: Fri Apr 14 14:00:33 2017 -0500
+
+    Remove unused variable
+
+commit 167ab52
+Author:     Joseph McGovern <joseph.mcgovern@webfilings.com>
+AuthorDate: Mon Apr 17 09:12:45 2017 -0500
+Commit:     Joseph McGovern <joseph.mcgovern@webfilings.com>
+CommitDate: Mon Apr 17 09:12:45 2017 -0500
+
+    Implement weight feature
+
+commit b1e7479
+Author:     Joseph McGovern <joseph.mcgovern@webfilings.com>
+AuthorDate: Mon Apr 17 09:23:08 2017 -0500
+Commit:     Joseph McGovern <joseph.mcgovern@webfilings.com>
+CommitDate: Mon Apr 17 09:23:08 2017 -0500
+
+    Do not add bare handed damage if a weapon is wielded
+
+commit 4b9e306
+Author:     Joseph McGovern <joseph.mcgovern@webfilings.com>
+AuthorDate: Mon Apr 17 10:07:09 2017 -0500
+Commit:     Joseph McGovern <joseph.mcgovern@webfilings.com>
+CommitDate: Mon Apr 17 10:07:09 2017 -0500
+
+    regen health
+
+commit c3b3833
+Author:     Joseph McGovern <joseph.mcgovern@webfilings.com>
+AuthorDate: Mon Apr 17 10:54:11 2017 -0500
+Commit:     Joseph McGovern <joseph.mcgovern@webfilings.com>
+CommitDate: Mon Apr 17 10:54:11 2017 -0500
+
+    Update all strcmp to .compare
+
+commit 9f8104d (HEAD -> master, origin/master)
+Author:     Joseph McGovern <joseph.mcgovern@webfilings.com>
+AuthorDate: Wed Apr 19 07:33:57 2017 -0500
+Commit:     Joseph McGovern <joseph.mcgovern@webfilings.com>
+CommitDate: Wed Apr 19 07:33:57 2017 -0500
+
+    Update ranged damage
